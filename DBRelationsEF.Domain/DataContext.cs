@@ -18,5 +18,25 @@ namespace DBRelationsEF.Domain
 		public DbSet<Author> Authors { get; set; }
 
 		public DbSet<Course> Courses { get; set; }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Author>()
+				.Property(a => a.Name)
+				.IsRequired()
+				.HasMaxLength(255);
+
+			modelBuilder.Entity<Course>()
+				.Property(c => c.Name)
+				.IsRequired()
+				.HasMaxLength(255);
+
+			modelBuilder.Entity<Course>()
+				.Property(c => c.Description)
+				.IsRequired()
+				.HasMaxLength(255);
+
+			base.OnModelCreating(modelBuilder);
+		}
 	}
 }
