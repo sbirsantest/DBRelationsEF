@@ -19,5 +19,7 @@ namespace DBRelationsEF.Domain.Models
       public float FullPrice { get; set; }
 
       public Author Author { get; set; }
+
+      public List<Tag> Tags { get; set; }
    }
 }
