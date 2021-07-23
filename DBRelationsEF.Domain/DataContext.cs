@@ -19,6 +19,8 @@ namespace DBRelationsEF.Domain
 
 		public DbSet<Course> Courses { get; set; }
 
+		public DbSet<Tag> Tags { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Author>()
@@ -36,6 +38,10 @@ namespace DBRelationsEF.Domain
 				.IsRequired()
 				.HasMaxLength(255);
 
+			modelBuilder.Entity<Tag>()
+				.Property(t => t.Name)
+				.IsRequired()
+				.HasMaxLength(255);
 			base.OnModelCreating(modelBuilder);
 		}
 	}
